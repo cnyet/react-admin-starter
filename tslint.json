@@ -23,7 +23,8 @@
       "check-separator",  //分隔符之后要有空格
       "check-type"   //变量类型之前要有空格
     ],
-    "one-line": false   //关闭行内检测
+    "one-line": false,   //关闭行内检测
+    "object-literal-sort-keys": false    //关闭检查对象文字中键的排序
   },
   //配置规则用于.js 或 .jsx文件
   "jsRules": {
@@ -36,6 +37,7 @@
       "check-separator",  //分隔符之后要有空格
       "check-type"   //变量类型之前要有空格
     ],
-    "one-line": false   //关闭行内检测
+    "one-line": false,   //关闭行内检测
+    "object-literal-sort-keys": false    //关闭检查对象文字中键的排序
   }
 }

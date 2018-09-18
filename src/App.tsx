@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import Header from "./components/header/header.jsx";
+import Home from "./components/home/home";
 import logo from './logo.svg';
 
 class App extends React.Component {
@@ -14,6 +15,7 @@ class App extends React.Component {
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
+        <Home compiler="typescript" framework="react" />
         <Header name="组件" />
       </div>
     );
