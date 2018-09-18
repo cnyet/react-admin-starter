@@ -37,7 +37,6 @@ export default class Header extends Component {
   render(){
     return (
       <div className="contianer">
-        <header></header>
         <div className="content">
           <h1>hello world {this.props.name}</h1>
           <h2>It is { this.state.date.toLocaleTimeString() }</h2>

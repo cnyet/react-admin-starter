@@ -1,0 +1,41 @@
+/**
+ * TS文件代码检查配置
+ * TSLint官方规则： https://palantir.github.io/tslint/rules/
+ */
+{
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "linterOptions": {
+    //排除的文件列表
+    "exclude": [
+      "config/**/*.js",
+      "node_modules/**/*.ts",
+      "coverage/lcov-report/*.js"
+    ]
+  },
+  //配置规则用于.ts 或 .tsx文件
+  "rules": {
+    "no-console": false,  //允许使用console在控制台打印信息
+    "only-arrow-functions": false,  //允许使用普通函数
+    "no-trailing-whitespace": false,    //允许每行代码后面有空格
+    "whitespace": [   //启用空格规则，
+      true,
+      "check-decl",   //变量声明前后要有空格
+      "check-separator",  //分隔符之后要有空格
+      "check-type"   //变量类型之前要有空格
+    ],
+    "one-line": false   //关闭行内检测
+  },
+  //配置规则用于.js 或 .jsx文件
+  "jsRules": {
+    "no-console": false,  //允许使用console在控制台打印信息
+    "only-arrow-functions": false,  //允许使用普通函数
+    "no-trailing-whitespace": false,    //允许每行代码后面有空格
+    "whitespace": [   //启用空格规则，
+      true,
+      "check-decl",   //变量声明前后要有空格
+      "check-separator",  //分隔符之后要有空格
+      "check-type"   //变量类型之前要有空格
+    ],
+    "one-line": false   //关闭行内检测
+  }
+}
