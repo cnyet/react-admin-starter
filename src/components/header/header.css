@@ -24,3 +24,7 @@
 .group li:last-child{
   border-bottom: none;
 }
+.fieldset{
+  width: 300px;
+  margin: 20px auto;
+}
