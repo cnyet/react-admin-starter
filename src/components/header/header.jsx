@@ -69,10 +69,28 @@ export default class Header extends Component {
             <TemperatureInput scale="c" temperature={celsius} onTemperatureChange={this.handleCelsiusChange} />
             <TemperatureInput scale="f" temperature={fahrenheit} onTemperatureChange={this.handleFahrenheitChange} />
           </fieldset>
+          <WelcomeDialog />
         </div>
       </div>
     )
   }
+}
+
+function FancyBorder(props){
+  return (
+    <div className={'fancyBorder fancyBorder-' + props.color}>
+      {props.children}
+    </div>
+  );
+}
+
+function WelcomeDialog(){
+  return (
+    <FancyBorder color="blue">
+      <h1 className="dialog-title">welcome</h1>
+      <p className="dialog-content">thank you for visiting our spacecraft.</p>
+    </FancyBorder>
+  )
 }
 
 function NumberList(props){
