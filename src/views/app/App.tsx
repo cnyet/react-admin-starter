@@ -1,8 +1,8 @@
 import * as React from 'react';
 import './App.css';
-import Header from "./components/header/header.jsx";
-import Home from "./components/home/home";
-import logo from './logo.svg';
+import Header from "../../components/header/header";
+import Home from "../../components/home/home";
+import logo from '../../assets/images/logo.svg';
 
 class App extends React.Component {
   public render() {
