@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './App.css';
+import './App.scss';
 import Header from "../../components/header/header";
 import Home from "../../components/home/home";
 import logo from '../../assets/images/logo.svg';
