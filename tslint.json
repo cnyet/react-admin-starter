@@ -14,6 +14,8 @@
   },
   //配置规则用于.ts 或 .tsx文件
   "rules": {
+    "quotemark": [true, "single"],  //单引号
+    "indent": [true, "spaces", 2],  //缩进用两个空格代替
     "no-console": false,  //允许使用console在控制台打印信息
     "only-arrow-functions": false,  //允许使用普通函数
     "no-trailing-whitespace": false,    //允许每行代码后面有空格
@@ -29,6 +31,8 @@
   },
   //配置规则用于.js 或 .jsx文件
   "jsRules": {
+    "quotemark": [true, "single"],  //单引号
+    "indent": [true, "spaces", 2],  //缩进用两个空格代替
     "no-console": false,  //允许使用console在控制台打印信息
     "only-arrow-functions": false,  //允许使用普通函数
     "no-trailing-whitespace": false,    //允许每行代码后面有空格
