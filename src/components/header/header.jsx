@@ -56,18 +56,18 @@ export default class Header extends Component {
     const celsius = scale === 'f' ? tryConvert(temperature, toCelsius) : temperature;
     const fahrenheit = scale === 'c' ? tryConvert(temperature, toFahrenheit) : temperature;
     return (
-      <div className='contianer'>
-        <div className='content'>
+      <div className="contianer">
+        <div className="content">
           <h1 className={this.state.isToggleOn ? 'default' : 'hidden'}>hello world {this.props.name}</h1>
           <h2>It is { this.state.date.toLocaleTimeString() }</h2>
           <button onClick={this.handleClick}>{this.state.isToggleOn ? '点击隐藏' : '点击显示'}</button>
           <NumberList numbers={this.state.numbers} />
-          <fieldset className='fieldset'>
+          <fieldset className="fieldset">
             <legend>输入一个温度</legend>
-            <input type='text' value={this.state.value} onChange={this.handleTemperatureChange} />
+            <input type="text" value={this.state.value} onChange={this.handleTemperatureChange} />
             <BoilingVerdict celsius={parseFloat(this.state.value)} />
-            <TemperatureInput scale='c' temperature={celsius} onTemperatureChange={this.handleCelsiusChange} />
-            <TemperatureInput scale='f' temperature={fahrenheit} onTemperatureChange={this.handleFahrenheitChange} />
+            <TemperatureInput scale="c" temperature={celsius} onTemperatureChange={this.handleCelsiusChange} />
+            <TemperatureInput scale="f" temperature={fahrenheit} onTemperatureChange={this.handleFahrenheitChange} />
           </fieldset>
           <WelcomeDialog />
           <ListOfTenThings />
@@ -87,9 +87,9 @@ function FancyBorder(props){
 
 function WelcomeDialog(){
   return (
-    <FancyBorder color='blue'>
-      <h1 className='dialog-title'>welcome</h1>
-      <p className='dialog-content'>thank you for visiting our spacecraft.</p>
+    <FancyBorder color="blue">
+      <h1 className="dialog-title">welcome</h1>
+      <p className="dialog-content">thank you for visiting our spacecraft.</p>
     </FancyBorder>
   )
 }
@@ -102,7 +102,7 @@ function NumberList(props){
     </li>
   )
   return (
-    <ul className='group'>{listItems}</ul>
+    <ul className="group">{listItems}</ul>
   )
 }
 
@@ -150,7 +150,7 @@ class TemperatureInput extends React.Component{
     return (
       <fieldset>
         <legend>在{scale}中输入温度：</legend>
-        <input type='text' value={temperature} onChange={this.handleChange} />
+        <input type="text" value={temperature} onChange={this.handleChange} />
       </fieldset>
     )
   }
