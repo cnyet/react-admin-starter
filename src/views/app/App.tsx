@@ -10,13 +10,25 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <div className="header-wrap">
+            <img src={logo} className="App-logo" alt="logo" />
+            <span className="App-title">React</span>
+          </div>
+          <nav className="nav-wrap">
+            <ul>
+              <li>
+                <a href="javascript:;">文档</a>
+              </li>
+              <li>
+                <a href="javascript:;">教程</a>
+              </li>
+              <li>
+                <a href="javascript:;">博客</a>
+              </li>
+            </ul>
+          </nav>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <Home compiler="typescript" framework="react" />
+        <Home compiler="typescript" framework="React" />
         <Header name="组件" />
         <Footer />
       </div>
