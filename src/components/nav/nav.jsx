@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './nav.scss';
 
-export default class Nav extends React.Component {
+export default class Nav extends Component {
   constructor(props) {
     super(props);
   }
   render() {
+    const groups = this.props.groups;
     return (
-      <div>
-        <h1>Hello world.</h1>
-        <h2>It is {this.props.data.toLocaleTimeString()}.</h2>
-      </div>
+      <nav className="nav-wrap">
+        <ul>
+          {
+            groups.map((item, index) =>
+              <li key={index}>
+                <a href="javascript:;">{item.title}</a>
+              </li>
+            )
+          }
+        </ul>
+      </nav>
     );
   }
 }

@@ -20,26 +20,7 @@
   .header-wrap{
 
   }
-  .nav-wrap{
-    flex: 1;
-    ul{
-      list-style: none;
-      text-align: right;
-      margin: 0;
-      padding: 0;
-      li{
-        height: 60px;
-        display: inline-block;
-        a {
-          padding: 20px 30px;
-          line-height: 20px;
-          color: white;
-          display: block;
-          text-decoration: none;
-        }
-      }
-    }
-  }
+
 }
 
 .App-title {
