@@ -1,3 +1,5 @@
+@import '../../assets/styles/variable.scss';
+
 .content{
   padding: 0 20px;
 }
@@ -27,4 +29,17 @@
 .fieldset{
   width: 300px;
   margin: 20px auto;
+}
+.App-header{
+  .login-link{
+    display: inline-block;
+    height: 100%;
+    line-height: 60px;
+    padding: 0 15px;
+    color: $linkColor;
+    text-decoration: none;
+    &:active{
+      background-color: lighten(black, 20%);
+    }
+  }
 }

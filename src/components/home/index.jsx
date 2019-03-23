@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './header.scss';
+import './index.scss';
 
-export default class Header extends Component {
+export default class Home extends Component {
   constructor(props){
     super(props);
     this.state = {
