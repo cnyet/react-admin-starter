@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TemperatureInput from './temperature.jsx';
+import Children from './children.jsx';
 import './index.scss';
 
 export default class Home extends Component {
@@ -12,8 +13,6 @@ export default class Home extends Component {
       scale: 'c'
     };
     this.handleClick = this.handleClick.bind(this);
-    this.toFahrenheit = this.toFahrenheit.bind(this);
-    this.toCelsius = this.toCelsius.bind(this);
     this.handleCelsiusChange = this.handleCelsiusChange.bind(this);
     this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);
   }
@@ -83,6 +82,7 @@ export default class Home extends Component {
             scale="f"
             temperature={fahrenheit}
             onTemperatureChange={this.handleFahrenheitChange} />
+            <Children color="blue" left="Welcome" right="React" />
         </div>
       </div>
     )
