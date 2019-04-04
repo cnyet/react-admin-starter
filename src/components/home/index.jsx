@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TemperatureInput from './temperature.jsx';
+import PropTypes from 'prop-types';
 import Children from './children.jsx';
 import './index.scss';
 
@@ -89,3 +90,7 @@ export default class Home extends Component {
   }
 }
 
+//类型检查
+Home.PropTypes = {
+  name: PropTypes.string
+}
