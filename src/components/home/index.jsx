@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TemperatureInput from './temperature.jsx';
 import PropTypes from 'prop-types';
 import Children from './children.jsx';
+import TodoList from './todolist.jsx';
 import './index.scss';
 
 export default class Home extends Component {
@@ -83,7 +84,8 @@ export default class Home extends Component {
             scale="f"
             temperature={fahrenheit}
             onTemperatureChange={this.handleFahrenheitChange} />
-            <Children color="blue" left="Welcome" right="React" />
+          <Children color="blue" left="Welcome" right="React" />
+          <TodoList />
         </div>
       </div>
     )
