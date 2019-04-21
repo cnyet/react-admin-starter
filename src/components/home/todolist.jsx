@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import TodoItem from './todoItem';
 
 class TodoList extends Component {
   constructor(props) {
@@ -9,41 +10,54 @@ class TodoList extends Component {
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.addTodoList = this.addTodoList.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
   handleInputChange(e) {
-    this.setState({
-      inputValue: e.target.value
-    })
+    const value = e.target.value;
+    this.setState((prevState) => ({
+      inputValue: value
+    }));
   }
-  addTodoList(e) {
-    this.setState({
-      list: [...this.state.list, this.state.inputValue],
+  addTodoList() {
+    this.setState((prevState) => ({
+      list: [...prevState.list, prevState.inputValue],
       inputValue: ''
-    })
+    }));
   }
   handleDelete(index) {
-    const list = [...this.state.list];
-    list.splice(index, 1);
-    this.setState({
-      list: list
+    this.setState((prevState) => {
+      const list = [...prevState.list];
+      list.splice(index, 1);
+      return { list };
+    });
+  }
+  getTodoItem() {
+    return this.state.list.map((item, index) => {
+      return (
+        <TodoItem
+          key={index}
+          index={index}
+          content={item}
+          deleteItem={this.handleDelete} />
+      )
     })
   }
   render() {
     return (
       <Fragment>
-        <input
-          value={this.state.inputValue}
-          onChange={this.handleInputChange} />
-        <button onClick={this.addTodoList}>提交</button>
-        <ul>
-          {
-            this.state.list.map((item, index) =>
-              <li key={index} onDoubleClick={this.handleDelete.bind(this, index)}>{item}</li>
-            )
-          }
-        </ul>
+        <div>
+          <label htmlFor="input">输入框</label>
+          <input
+            id="input"
+            value={this.state.inputValue}
+            onChange={this.handleInputChange} />
+          <button onClick={this.addTodoList}>提交</button>
+        </div>
+          <ul>
+            {this.getTodoItem()}
+          </ul>
       </Fragment>
-    )
+      )
   }
 }
 
