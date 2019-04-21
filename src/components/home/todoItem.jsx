@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class TodoItem extends Component {
   constructor(props) {
@@ -18,6 +19,17 @@ class TodoItem extends Component {
       </li>
     )
   }
+}
+
+TodoItem.propTypes = {
+  test: PropTypes.number,
+  content: PropTypes.string.isRequired,
+  index: PropTypes.number,
+  deleteItem: PropTypes.func
+}
+
+TodoItem.defaultProps = {
+  test: 123
 }
 
 export default TodoItem;
