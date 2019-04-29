@@ -93,6 +93,6 @@ export default class Home extends Component {
 }
 
 //类型检查
-Home.PropTypes = {
+Home.propTypes = {
   name: PropTypes.string
 }

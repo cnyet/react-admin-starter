@@ -13,7 +13,8 @@ class TodoList extends Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
   handleInputChange(e) {
-    const value = e.target.value;
+    // const value = e.target.value;
+    const value = this.input.value;
     this.setState((prevState) => ({
       inputValue: value
     }));
@@ -50,7 +51,8 @@ class TodoList extends Component {
           <input
             id="input"
             value={this.state.inputValue}
-            onChange={this.handleInputChange} />
+            onChange={this.handleInputChange}
+            ref={(input) => {this.input = input}} />
           <button onClick={this.addTodoList}>提交</button>
         </div>
           <ul>
