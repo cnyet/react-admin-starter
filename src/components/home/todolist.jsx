@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { CSSTransition } from 'react-transition-group';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import TodoItem from './todoItem';
 import './todoitem.css';
 
@@ -9,7 +9,8 @@ class TodoList extends Component {
     this.state = {
       inputValue: 'React',
       list: [],
-      show: true
+      group: [],
+      show: false
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.addTodoList = this.addTodoList.bind(this);
@@ -49,7 +50,7 @@ class TodoList extends Component {
   }
   handleClick() {
     this.setState({
-      show: this.state.show ? false : true
+      group: [...this.state.group, 'item']
     });
   }
   render() {
@@ -67,12 +68,20 @@ class TodoList extends Component {
         <ul>
           {this.getTodoItem()}
         </ul>
-        <CSSTransition
-          in={this.state.show}
-          timeout={1000}
-          classNames="fade">
-          <div>Hello</div>
-        </CSSTransition>
+        <TransitionGroup>
+          {this.state.group.map((item, index) => {
+            return (
+              <CSSTransition
+                key={index}
+                timeout={1000}
+                onEntered={(el) => {el.style.color = 'blue'}}
+                appear={true}
+                classNames="fade">
+                <div>{item}</div>
+              </CSSTransition>
+            )
+          })}
+        </TransitionGroup>
         <button onClick={this.handleClick}>切换</button>
       </Fragment>
       )

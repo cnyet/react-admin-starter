@@ -3,17 +3,19 @@
 }
 .fade-enter-active{
   opacity: 1;
-  transition: opacity 1s ease-in;
+  transition: all 1s ease-in;
 }
 .fade-enter-done{
   opacity: 1;
+  color: red;
 }
 .fade-exit{
-
+  opacity: 1;
 }
 .fade-exit-active{
-
+  opacity: 1;
+  transition: all 1s ease-in;
 }
 .fade-exit-done{
-
+  opacity: 0;
 }
