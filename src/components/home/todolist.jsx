@@ -1,14 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import 'antd/dist/antd.css';
 import TodoItem from './todoItem';
 import './todoitem.css';
+import store from '../../store';
 
 class TodoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       inputValue: 'React',
-      list: [],
+      list: store.getState().list,
       group: [],
       show: false
     };
