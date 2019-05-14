@@ -1,8 +1,9 @@
 import * as React from 'react';
 import Header from '../../components/header';
-import Home from '../../components/home';
+import TodoList from '../../components/todolist';
+// import Home from '../../components/home';
 // import Login from '../../components/login';
-import Footer from '../../components/footer';
+// import Footer from '../../components/footer';
 import './App.scss';
 
 class App extends React.Component {
@@ -13,8 +14,8 @@ class App extends React.Component {
       // </div>
       <div className="App">
         <Header name="组件" />
-        <Home compiler="typescript" framework="React" />
-        <Footer />
+        { /* <Home compiler="typescript" framework="React" /> */ }
+        <TodoList />
       </div>
     );
   }
