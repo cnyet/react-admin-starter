@@ -30,6 +30,14 @@ export default  class TodoList extends Component {
     }
     store.dispatch(action);
   }
+  handleClickItem(index) {
+    console.log(index);
+    const action = {
+      type: 'delete_todo_item',
+      index
+    }
+    store.dispatch(action);
+  }
   render() {
     return (
       <Fragment>
@@ -45,7 +53,9 @@ export default  class TodoList extends Component {
           bordered
           className="group"
           dataSource={this.state.list}
-          renderItem={item => <List.Item>{item}</List.Item>}/>
+          renderItem={
+            (item, index) => <List.Item onClick={(e) => this.handleClickItem(index)}>{item}</List.Item>
+          }/>
       </Fragment>
     )
   }
