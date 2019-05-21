@@ -1,5 +1,5 @@
 const defaultState = {
-  inputValue: 'hello',
+  inputValue: '',
   list: [1, 2, 'a']
 };
 export default (state = defaultState, action) => {
