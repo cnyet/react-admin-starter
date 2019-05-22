@@ -1,5 +1,10 @@
+/**
+ * 容器组件处理逻辑
+ */
 import React, { Component, Fragment } from 'react';
-import TodoListUI from './TodoListUI';
+import axios from 'axios';
+import { getInputChangeAction, getAddItemAction, getDeleteItemAction } from '../../store/actionCreator';
+import { TodoListUI } from './TodoListUI';
 import store from '../../store';
 
 export default  class TodoList extends Component {
@@ -13,27 +18,18 @@ export default  class TodoList extends Component {
     store.subscribe(this.handleStoreChange);
   }
   handleInputChange(e) {
-    const action = {
-      type: 'change_input_value',
-      value: e.target.value
-    }
+    const action = getInputChangeAction(e.target.value);
     store.dispatch(action);
   }
   handleStoreChange() {
     this.setState(store.getState());
   }
   handleClick() {
-    const action = {
-      type: 'add_todo_item',
-      value: this.state.inputValue
-    }
+    const action = getAddItemAction();
     store.dispatch(action);
   }
   handleClickItem(index) {
-    const action = {
-      type: 'delete_todo_item',
-      index
-    }
+    const action = getDeleteItemAction(index);
     store.dispatch(action);
   }
   render() {
@@ -45,5 +41,10 @@ export default  class TodoList extends Component {
         handleClick = {this.handleClick}
         handleClickItem = {this.handleClickItem} />
     );
+  }
+  componentDidMount() {
+    axios.get('/list').then(res => {
+      console.log(res);
+    });
   }
 }
