@@ -3,7 +3,7 @@ import TemperatureInput from './temperature.jsx';
 import PropTypes from 'prop-types';
 import Children from './children.jsx';
 import TodoList from './todolist.jsx';
-import './index.scss';
+import './index.css';
 
 export default class Home extends Component {
   constructor(props){

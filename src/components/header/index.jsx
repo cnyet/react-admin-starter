@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Nav from './nav';
 import logo from '../../assets/images/logo.svg';
-import './index.scss';
+import './index.css';
 
 export default class Header extends Component {
   constructor(props){

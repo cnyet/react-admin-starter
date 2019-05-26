@@ -4,7 +4,7 @@ import TodoList from '../../components/todolist';
 // import Home from '../../components/home';
 // import Login from '../../components/login';
 // import Footer from '../../components/footer';
-import './App.scss';
+import './App.css';
 
 class App extends React.Component {
   public render() {

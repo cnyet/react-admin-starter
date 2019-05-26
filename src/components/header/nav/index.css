@@ -1,0 +1,23 @@
+.nav-wrap{
+  flex: 1;
+
+}
+.nav-wrap ul{
+  list-style: none;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-wrap ul li{
+  height: 60px;
+  display: inline-block;
+}
+.nav-wrap ul li a {
+  padding: 20px 30px;
+  line-height: 20px;
+  font-weight: 300;
+  color: white;
+  display: block;
+  text-decoration: none;
+}

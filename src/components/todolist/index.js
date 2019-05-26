@@ -2,8 +2,7 @@
  * 容器组件处理逻辑
  */
 import React, { Component, Fragment } from 'react';
-import axios from 'axios';
-import { getInputChangeAction, getAddItemAction, getDeleteItemAction } from '../../store/actionCreator';
+import { getInputChangeAction, getAddItemAction, getDeleteItemAction, getInitList } from '../../store/actionCreator';
 import { TodoListUI } from './TodoListUI';
 import store from '../../store';
 
@@ -43,8 +42,7 @@ export default  class TodoList extends Component {
     );
   }
   componentDidMount() {
-    axios.get('/list').then(res => {
-      console.log(res);
-    });
+    const action = getInitList();
+    store.dispatch(action);
   }
 }

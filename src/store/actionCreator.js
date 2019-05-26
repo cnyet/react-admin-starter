@@ -1,4 +1,5 @@
-import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './actionTypes';
+import axios from 'axios';
+import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM, GET_INIT_LIST, INIT_LIST_ACTION } from './actionTypes';
 
 export const getInputChangeAction = (value) => ({
   type: CHANGE_INPUT_VALUE,
@@ -15,5 +16,33 @@ export const getDeleteItemAction = (index) => ({
 });
 
 export const initListAction = (value) => ({
+  type: INIT_LIST_ACTION,
+  value
+});
 
-})
+export const getInitList = () => ({
+  type: GET_INIT_LIST
+});
+
+// redux-thunk异步处理
+export const getTodoList = () => {
+  return (dispatch) => {
+    const data = ['hello', 'react', 'redux'];
+    const action = initListAction(data);
+    dispatch(action);
+    // const instance = axios.create({
+    //   baseURL: 'http://localhost.charlesproxy.com',
+    // });
+    // instance.get('/list').then(res => {
+    //   console.log(res);
+    //   const data = res;
+    //   const action = initListAction(data);
+    //   dispatch(action);
+    // }).catch(err => {
+    //   console.log(err);
+    // });
+  };
+
+  // reduc-saga 异步处理
+
+}

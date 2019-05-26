@@ -1,0 +1,8 @@
+@import "./assets/styles/variable.css";
+@import "./assets/styles/common.css";
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
