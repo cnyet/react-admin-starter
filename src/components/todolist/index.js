@@ -1,48 +1,61 @@
 /**
  * 容器组件处理逻辑
  */
-import React, { Component, Fragment } from 'react';
-import { getInputChangeAction, getAddItemAction, getDeleteItemAction, getInitList } from '../../store/actionCreator';
-import { TodoListUI } from './TodoListUI';
-import store from '../../store';
+import React, { Fragment } from 'react';
+import { Input, Button, List } from 'antd';
+import { connect } from 'react-redux';
+import 'antd/dist/antd.css';
+import './index.css';
 
-export default  class TodoList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = store.getState();
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleStoreChange = this.handleStoreChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleClickItem = this.handleClickItem.bind(this);
-    store.subscribe(this.handleStoreChange);
+const TodoList = (props) => {
+  const { inputValue, list, changeInputValue, addListItem } = props;
+  return (
+    <Fragment>
+      <div className="header">
+        <Input
+          placeholder="Basic usage"
+          className="input"
+          value={inputValue}
+          onChange={changeInputValue}/>
+        <Button type="primary" onClick={addListItem}>添加</Button>
+      </div>
+      <List
+        bordered
+        className="group"
+        dataSource={list}
+        renderItem={
+          (item, index) => (
+            <List.Item>{item}</List.Item>
+          )
+        }
+      />
+    </Fragment>
+  );
+}
+
+const mapStateToProps = (state) => {
+  return {
+    inputValue: state.inputValue,
+    list: state.list
   }
-  handleInputChange(e) {
-    const action = getInputChangeAction(e.target.value);
-    store.dispatch(action);
-  }
-  handleStoreChange() {
-    this.setState(store.getState());
-  }
-  handleClick() {
-    const action = getAddItemAction();
-    store.dispatch(action);
-  }
-  handleClickItem(index) {
-    const action = getDeleteItemAction(index);
-    store.dispatch(action);
-  }
-  render() {
-    return (
-      <TodoListUI
-        inputValue = {this.state.inputValue}
-        dataSource = {this.state.list}
-        handleInputChange = {this.handleInputChange}
-        handleClick = {this.handleClick}
-        handleClickItem = {this.handleClickItem} />
-    );
-  }
-  componentDidMount() {
-    const action = getInitList();
-    store.dispatch(action);
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeInputValue(e) {
+      const action = {
+        type: 'change_input_value',
+        value: e.target.value
+      };
+      dispatch(action);
+    },
+    addListItem() {
+      const action = {
+        type: 'add_list_item'
+      }
+      dispatch(action);
+    }
   }
 }
+
+// react-redux的connect方法将子组件与redux连接
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
