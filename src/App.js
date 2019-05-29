@@ -1,9 +1,14 @@
-import React, { Component } from 'react'; 
+import React, { Component, Fragment } from 'react'; 
+import Header from './common/header';
+import { GlobalStyle } from './style';
 
 export default class App extends Component {
   render() {
     return (
-      <h1>hello world.</h1>
+      <Fragment>
+        <GlobalStyle />
+        <Header />
+      </Fragment>
     );
   }
 }
