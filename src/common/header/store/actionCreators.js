@@ -1,3 +1,6 @@
+/**
+ * 定义state派发的action 
+ */
 import { SearchFocus, SearchBlur } from './constants';
 
 export const focusAction = {

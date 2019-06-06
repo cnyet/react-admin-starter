@@ -1,8 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
-import { HeaderWrapper, Logo, Nav, NavItem, SearchWrapper, NavSearch, Addition, Button } from './style';
 import { actionCreators } from './store';
+import { 
+  HeaderWrapper, 
+  Logo, 
+  Nav, 
+  NavItem, 
+  SearchWrapper, 
+  NavSearch, 
+  Addition, 
+  Button 
+} from './style';
 
 /**
  * UI组件渲染页面
