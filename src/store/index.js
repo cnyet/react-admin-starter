@@ -1,5 +1,6 @@
-import { createStore } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 import reducer from './reducer';
+import thunk from 'redux-thunk';
 
 /**
  * store 是唯一的
@@ -12,10 +13,10 @@ import reducer from './reducer';
  * redux-thunk 的作用是对对dispatch方法的升级，没有thunk时dispatch只能接受一个对象，有thunk以后dispatch接受一个函数
  * redux-saga 对于大型项目时可拆分复杂的业务逻辑
  */
-const store = createStore(
-  reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore( reducer, composeEnhancers(
+  applyMiddleware(thunk)
+));
 
 export default store;
 

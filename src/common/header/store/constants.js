@@ -4,3 +4,4 @@
  */
 export const SearchFocus = 'search_focus';
 export const SearchBlur = 'search_blur';
+export const SearchItem = 'search_item';
