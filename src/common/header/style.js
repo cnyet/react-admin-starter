@@ -77,24 +77,7 @@ export const SerarchInfo = styled.div`
   left: 0;
   top: 100%;
   border-radius: 4px;
-  .search-trending-header {
-    padding: 10px 15px;
-    height: 20px;
-    span {
-      float: left;
-      font-size: 14px;
-      color: #969696;
-    }
-    a {
-      float: right;
-      font-size: 13px;
-      color: #969696;
-      background-color: transparent;
-      border-width: 0;
-      padding: 0;
-      text-decoration: none;
-    }
-  }
+  
   .search-trending-tag-wrap {
     padding: 0 15px 20px;
     li {
@@ -111,6 +94,44 @@ export const SerarchInfo = styled.div`
     }
   }
 `;
+
+export const SearchHeader = styled.div`
+  padding: 10px 15px;
+  height: 20px;
+`;
+
+export const SearchHeaderLeft = styled.span`
+  float: left;
+  font-size: 14px;
+  color: #969696;
+`;
+
+export const SearchHeaderRight = styled.span`
+  float: right;
+  font-size: 13px;
+  color: #969696;
+  background-color: transparent;
+  border-width: 0;
+  padding: 0;
+  text-decoration: none;
+`;
+
+export const SearchBody = styled.ul`
+  padding: 0 15px 20px;
+`;
+
+export const SearchBodyItem = styled.li`
+  margin-right: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+  line-height: 20px;
+  padding: 2px 6px;
+  font-size: 12px;
+  color: #787878;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+`;
+
 export const NavSearch = styled.input.attrs({
   placeholder: '搜索'
 })`

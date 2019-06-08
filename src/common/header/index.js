@@ -9,6 +9,11 @@ import {
   NavItem,
   SearchWrapper,
   SerarchInfo,
+  SearchHeader,
+  SearchHeaderLeft,
+  SearchHeaderRight,
+  SearchBody,
+  SearchBodyItem,
   NavSearch,
   Addition,
   Button
@@ -21,26 +26,31 @@ import {
  */
 class Header extends Component {
   getListArea() {
-    if(this.props.focused) {
+    const { focused, mouseIn, list, page, totalPage, handleChangePage, handleMouseEnter, handleMouseLeave } = this.props;
+    const newList = list.toJS();
+    let pageList = [];
+    if (newList.length) {
+      for(let i = (page - 1) * 10; i < page*10; i++) {
+        if (newList[i]) {
+          pageList.push(<SearchBodyItem key={newList[i]}>{newList[i]}</SearchBodyItem>);
+        }
+      }
+    }
+    if(focused || mouseIn) {
       return (
-        <SerarchInfo>
-          <div className="search-trending-header clearfix">
-            <span>热门搜索</span> 
-            <a href="javascript:;">
+        <SerarchInfo
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}>
+          <SearchHeader>
+            <SearchHeaderLeft>热门搜索</SearchHeaderLeft>
+            <SearchHeaderRight
+              onClick={() => handleChangePage(page, totalPage)}>
               <i className="iconfont ic-search-change">&#xe606;</i>换一批
-            </a>
-          </div>
-          <ul className="search-trending-tag-wrap">
-          {
-            this.props.list.map(item => {
-              return (
-                <li key={item}>
-                  <span>{item}</span>
-                </li>
-              )
-            })
-          }
-          </ul>
+            </SearchHeaderRight>
+          </SearchHeader>
+          <SearchBody>
+            { pageList }
+          </SearchBody>
         </SerarchInfo>
       )
     }else{
@@ -49,6 +59,7 @@ class Header extends Component {
   }
 
   render() {
+    const { focused, page, handleInputFocus, handleInputBlur }  = this.props;
     return (
       <HeaderWrapper>
         <Logo />
@@ -59,15 +70,15 @@ class Header extends Component {
           <NavItem className="right">
             <i className="iconfont">&#xe636;</i>
           </NavItem>
-          <SearchWrapper className={this.props.focused ? 'focused' : ''}>
+          <SearchWrapper className={focused ? 'focused' : ''}>
             <CSSTransition
-              in={this.props.focused}
+              in={focused}
               timeout={200}
               classNames="slide">
               <NavSearch 
                 className="input"
-                onFocus={this.props.handleInputFocus}
-                onBlur={this.props.handleInputBlur}>
+                onFocus={ () => handleInputFocus(page)}
+                onBlur={handleInputBlur}>
               </NavSearch>
             </CSSTransition>
             <span className="search-btn">
@@ -88,18 +99,34 @@ class Header extends Component {
 const mapStateToProps = (state) => {
   return {
     focused: state.getIn(['header', 'focused']),
+    mouseIn: state.getIn(['header', 'mouseIn']),
+    page: state.getIn(['header', 'page']),
+    totalPage: state.getIn(['header', 'totalPage']),
     list: state.getIn(['header', 'list'])
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleInputFocus() {
-      dispatch(actionCreators.getList());
+    handleInputFocus(page) {
+      dispatch(actionCreators.getList(page));
       dispatch(actionCreators.focusAction);
     },
     handleInputBlur() {
       dispatch(actionCreators.blurAction);
+    },
+    handleMouseEnter() {
+      dispatch(actionCreators.mouseEnterAction);
+    },
+    handleMouseLeave() {
+      dispatch(actionCreators.mouseLeaveAction);
+    },
+    handleChangePage(page, totalPage) {
+      if (page < totalPage) {
+        dispatch(actionCreators.changePageAction(page + 1));
+      } else {
+        dispatch(actionCreators.changePageAction(1));
+      }
     }
   }
 };
