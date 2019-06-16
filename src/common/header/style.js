@@ -113,7 +113,18 @@ export const SearchHeaderRight = styled.span`
   background-color: transparent;
   border-width: 0;
   padding: 0;
+  cursor: pointer;
   text-decoration: none;
+  .spin{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    transition: all .5s ease-in;
+    transform-origin: center center;
+  }
+  span{
+    vertical-align: middle;
+  }
 `;
 
 export const SearchBody = styled.ul`

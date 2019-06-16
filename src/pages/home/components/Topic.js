@@ -1,24 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { TopicWrapper, TopicItem } from '../style';
+import { actionCreators } from '../store';
 
 class Topic extends Component {
+  componentDidMount() {
+    this.props.handleGetTopic();
+  }
   render() {
     const { topicList } = this.props;
-    return (
-      <TopicWrapper>
-      {
-        topicList.map(item => {
-          return (
-            <TopicItem key={item.get('id')}>
-              <img className='topic-img' src={item.get('imgUrl')} alt='' />
-              <span className='topic-title'>{item.get('title')}</span>
-            </TopicItem>
-          )
-        })
-      }
-      </TopicWrapper>
-    )
+    const topicSize = topicList.toJS();
+    if (topicSize.length) {
+      return (
+        <TopicWrapper>
+        {
+          topicList.map(item => {
+            return (
+              <TopicItem key={item.get('id')}>
+                <img className='topic-img' src={item.get('imgUrl')} alt='' />
+                <span className='topic-title'>{item.get('title')}</span>
+              </TopicItem>
+            )
+          })
+        }
+        </TopicWrapper>
+      )
+    } else {
+      return null;
+    }
   }
 }
 
@@ -26,4 +35,12 @@ const mapState = (state) => ({
   topicList: state.getIn(['home', 'topicList'])
 });
 
-export default connect(mapState, null)(Topic);
+const mapDispatch= (dispatch) => {
+  return {
+    handleGetTopic() {
+      dispatch(actionCreators.getTopicList());
+    }
+  }
+};
+
+export default connect(mapState, mapDispatch)(Topic);

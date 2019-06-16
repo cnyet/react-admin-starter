@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { RecommendWrapper } from '../style';
 
 class Recommend extends Component {
   render() {
     return (
-      <div>Recommend</div>
+      <RecommendWrapper>Recommend</RecommendWrapper>
     )
   }
 }
