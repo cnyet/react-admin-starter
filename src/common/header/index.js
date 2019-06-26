@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import { actionCreators } from './store';
 import {
@@ -24,7 +25,7 @@ import {
  * 当组件只有一个render函数时可作为无状态组件
  * 无状态组件执行效率更高
  */
-class Header extends Component {
+class Header extends PureComponent {
   getListArea() {
     const { focused, mouseIn, list, page, totalPage, handleChangePage, handleMouseEnter, handleMouseLeave } = this.props;
     const newList = list.toJS();
@@ -63,7 +64,9 @@ class Header extends Component {
     const { focused, page, handleInputFocus, handleInputBlur, list }  = this.props;
     return (
       <HeaderWrapper>
-        <Logo />
+        <Link to="/">
+          <Logo />
+        </Link>
         <Nav>
           <NavItem className="left active">首页</NavItem>
           <NavItem className="left">下载</NavItem>

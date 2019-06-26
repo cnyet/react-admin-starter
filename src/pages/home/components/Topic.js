@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { TopicWrapper, TopicItem } from '../style';
 import { actionCreators } from '../store';
 
-class Topic extends Component {
+class Topic extends PureComponent {
   componentDidMount() {
     this.props.handleGetTopic();
   }

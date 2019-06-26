@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { actionCreators } from '../store';
 import { ListWrapper, ListItem, ListItemImg, ListItemInfo, ListItemTitle, ListItemContent } from '../style';
 
-class List extends Component {
+class List extends PureComponent {
   componentDidMount() {
     this.props.handleGetArticleList();
   }
@@ -22,7 +23,9 @@ class List extends Component {
                   <img className="list-img" src={item.get('imgUrl')} alt='' />
                 </ListItemImg>
                 <ListItemInfo>
-                  <ListItemTitle href={item.get('href')}>{item.get('title')}</ListItemTitle>
+                  <Link to="/detail">
+                     <ListItemTitle>{item.get('title')}</ListItemTitle>
+                  </Link>
                   <ListItemContent>
                     <p className="content">{item.get('info')}</p>
                     <p className="meta">{item.get('author')}</p>
