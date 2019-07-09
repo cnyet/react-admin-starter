@@ -11,7 +11,6 @@ class List extends PureComponent {
   render() {
     const { articleList } = this.props;
     const articleSize = articleList.toJS();
-    console.log(articleList);
     if (articleSize.length) {
       return (
         <ListWrapper>

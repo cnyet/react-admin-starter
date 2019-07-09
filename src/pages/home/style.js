@@ -89,7 +89,7 @@ export const ListItemInfo = styled.div`
   padding-right: 165px;
 `;
 
-export const ListItemTitle = styled.a`
+export const ListItemTitle = styled.span`
   margin: -7px 0 4px;
   display: inherit;
   font-size: 18px;
@@ -117,10 +117,37 @@ export const ListItemContent = styled.div`
 export const RecommendWrapper = styled.div`
   height: 270px;
   margin-bottom: 30px;
-  border: 1px solid #f0f0f0;
+`;
+
+export const RecommendItem = styled.a`
+  .recommend-img{
+    width: 100%;
+    min-height: 50px;
+    margin-bottom: 6px;
+    border-radius: 4px;
+  }
 `;
 
 export const WriterWrapper = styled.div`
   height: 300px;
-  border: 1px solid #f0f0f0;
+`;
+
+export const WriterItem = styled.a`
+  padding-top: 5px;
+  margin-right: 60px;
+  font-size: 14px;
+  display: block;
+  overflow: hidden;
+  .writer-img{
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    float: left;
+  }
+  .writer-title{
+    float: left;
+    margin-left: 20px;
+    padding: 20px 0;
+  }
 `;

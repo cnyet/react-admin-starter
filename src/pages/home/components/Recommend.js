@@ -1,12 +1,41 @@
 import React, { Component } from 'react';
-import { RecommendWrapper } from '../style';
+import { connect } from 'react-redux';
+import { actionCreators } from '../store';
+import { RecommendWrapper, RecommendItem } from '../style';
 
 class Recommend extends Component {
+  componentDidMount() {
+    this.props.handleGetCommendList();
+  }
   render() {
+    const { recommendList } = this.props;
+    console.log(recommendList);
     return (
-      <RecommendWrapper>Recommend</RecommendWrapper>
+      <RecommendWrapper>
+      {
+        recommendList.map(item => {
+          return (
+            <RecommendItem key={item.get('id')}>
+              <img className='recommend-img' src={item.get('image_url')} alt='' />
+            </RecommendItem>
+          )
+        })
+      }
+      </RecommendWrapper>
     )
   }
 }
 
-export default Recommend;
+const mapState = (state) => ({
+  recommendList: state.getIn(['home', 'recommendList'])
+});
+
+const mapDispatch = (dispatch) => {
+  return {
+    handleGetCommendList() {
+      dispatch(actionCreators.getCommendList());
+    }
+  };
+};
+
+export default connect(mapState, mapDispatch)(Recommend);
