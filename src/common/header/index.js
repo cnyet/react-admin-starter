@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import { actionCreators } from './store';
+import { actionCreators as loginActionCreators } from '../../pages/login/store';
 import {
   HeaderWrapper,
   Logo,
@@ -61,7 +62,8 @@ class Header extends PureComponent {
   }
 
   render() {
-    const { focused, page, handleInputFocus, handleInputBlur, list }  = this.props;
+    const { focused, page, handleInputFocus, handleInputBlur, list, loginStatus }  = this.props;
+    console.log(loginStatus);
     return (
       <HeaderWrapper>
         <Link to="/">
@@ -70,7 +72,13 @@ class Header extends PureComponent {
         <Nav>
           <NavItem className="left active">首页</NavItem>
           <NavItem className="left">下载</NavItem>
-          <NavItem className="right">登录</NavItem>
+          {
+            loginStatus ? 
+            <NavItem className="right" onClick={this.props.logout}>退出</NavItem> : 
+            <Link to="/login">
+              <NavItem className="right">登录</NavItem> 
+            </Link>
+          }
           <NavItem className="right">
             <i className="iconfont">&#xe636;</i>
           </NavItem>
@@ -106,7 +114,8 @@ const mapStateToProps = (state) => {
     mouseIn: state.getIn(['header', 'mouseIn']),
     page: state.getIn(['header', 'page']),
     totalPage: state.getIn(['header', 'totalPage']),
-    list: state.getIn(['header', 'list'])
+    list: state.getIn(['header', 'list']),
+    loginStatus: state.getIn(['login', 'login'])
   }
 };
 
@@ -140,6 +149,9 @@ const mapDispatchToProps = (dispatch) => {
       } else {
         dispatch(actionCreators.changePageAction(1));
       }
+    },
+    logout() {
+      dispatch(loginActionCreators.logoutAction);
     }
   }
 };

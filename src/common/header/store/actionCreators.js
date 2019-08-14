@@ -38,7 +38,7 @@ export const getList = (page) => {
     headers: {'X-Requested-With': 'XMLHttpRequest'}
   });
   return (dispatch) => {
-    instance.get('api/list.json', {
+    instance.get('/api/list.json', {
       params: {
         page: page,
         pageSize: 10

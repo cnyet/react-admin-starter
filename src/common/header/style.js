@@ -29,6 +29,7 @@ export const NavItem = styled.div`
   padding: 0 15px;
   font-size: 16px;
   color: #333;
+  cursor: pointer;
   &.active{
     color: #ea6f5a;
   }
@@ -182,6 +183,7 @@ export const Addition = styled.div`
 export const Button = styled.button`
   width: 80px;
   height: 38px;
+  cursor: pointer;
   text-align: center;
   margin: 9px 5px 0 15px;
   border: 1px solid rgba(236,97,73,.7);
