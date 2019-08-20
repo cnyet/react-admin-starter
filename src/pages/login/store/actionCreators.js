@@ -1,4 +1,3 @@
-import { fromJS } from 'immutable';
 import { SetLogin, SetLogout } from './constants';
 
 export const loginAction = {

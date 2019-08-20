@@ -9,7 +9,6 @@ class Writer extends Component {
   }
   render() {
     const { writerList } = this.props;
-    console.log(writerList);
     return (
       <WriterWrapper>
         {

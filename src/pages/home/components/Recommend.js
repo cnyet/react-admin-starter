@@ -9,7 +9,6 @@ class Recommend extends Component {
   }
   render() {
     const { recommendList } = this.props;
-    console.log(recommendList);
     return (
       <RecommendWrapper>
       {
