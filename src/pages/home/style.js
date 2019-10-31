@@ -19,6 +19,23 @@ export const HomeLeft = styled.div`
   }
 `;
 
+export const Navbar = styled.nav`
+  position: absolute;
+  background: transparent;
+  transition: background .5s ease-in-out,padding .5s ease-in-out;
+  border-bottom: 1px solid rgba(255,255,255,.3);
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  width: 100%;
+  .fixed{
+    border-bottom: 1px solid rgba(255,255,255,.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0;
+    background-color: #000;
+  }
+`;
+
 export const HomeRight = styled.div`
   width: 240px;
   float: right;

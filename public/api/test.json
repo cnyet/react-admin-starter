@@ -1,0 +1,24 @@
+{
+  "msg": "success",
+  "data|3": [
+    {
+      "symbol": "@string(\"lower\", 5)",
+      "lists|3": [
+        {
+          "gene": "@string(\"lower\", 5)",
+          "pos": "@string(\"lower\", 5, 10)",
+          "variant_information": "@title(5)",
+          "zygosity": "@title(5)",
+          "disease": "@word(5)",
+          "inheritance_mode": "@word(7)",
+          "origin": "@title(3)",
+          "classification": "@word(5)",
+          "variant_description": "@sentence",
+          "medical_advice": "@sentence",
+          "gene_description": "@sentence"
+        }
+      ]
+    }
+  ],
+  "code|0-5": 0
+}
