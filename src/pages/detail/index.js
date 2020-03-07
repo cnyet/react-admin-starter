@@ -24,8 +24,8 @@ class Detail extends PureComponent {
             </div>
           </Author>
           <Reference>
-            <img src={referL} alt="" class="bg1 bg" />
-            <img src={referR} alt="" class="bg2 bg" />
+            <img src={referL} alt="" className="bg1 bg" />
+            <img src={referR} alt="" className="bg2 bg" />
             <div className="famous-word">
               古之立大事者，不唯有超世之才，亦必有坚韧不拔之志。
               <p className="author">——苏轼</p>

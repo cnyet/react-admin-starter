@@ -7,7 +7,7 @@ class Todo extends Component {
     this.state = {
       inputValue: 'hello',
       list: []
-    }
+    };
   }
   changeHandle(e) {
     this.setState({

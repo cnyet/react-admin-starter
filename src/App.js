@@ -9,12 +9,26 @@ import Home from './pages/home';
 import Detail from './pages/detail';
 import Login from './pages/login';
 import Todo from './pages/todo';
+import TodoList from './pages/todo-list';
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: 0
+    };
+  }
+  handleChange(value) {
+    console.log(value);
+    this.setState({
+      data: value
+    });
+  }
   render() {
     return (
       <Fragment>
-        <GlobalStyle />
+        <TodoList data={this.state.data} onClick={this.handleChange.bind(this)} />
+        {/*<GlobalStyle />
         <IconFontGlobal />
         <Provider store={store}>   
           <BrowserRouter>
@@ -26,7 +40,7 @@ export default class App extends Component {
               <Route path="/todo" exact component={Todo}></Route>
             </div>
           </BrowserRouter>
-        </Provider>
+        </Provider>*/}
       </Fragment>
     );
   }

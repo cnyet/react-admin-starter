@@ -63,7 +63,6 @@ class Header extends PureComponent {
 
   render() {
     const { focused, page, handleInputFocus, handleInputBlur, list, loginStatus }  = this.props;
-    console.log(loginStatus);
     return (
       <HeaderWrapper>
         <Link to="/">
