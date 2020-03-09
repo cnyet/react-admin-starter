@@ -1,23 +1,12 @@
 import React, { Component } from 'react';
-import { TodoWrapper, TodoList } from './style';
+import { connect } from 'react-redux';
+import store from '../../todoStore';
+import { initListItems, getInputValue, handleChangeInput, addListItem, deleteListItem} from '../../todoStore/actionCreators';
+import TodoUI from './ui';
 
 class Todo extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      inputValue: 'hello',
-      list: []
-    };
-  }
-  changeHandle(e) {
-    this.setState({
-      inputValue: e.target.value
-    })
-  }
-  clickHandle() {
-    this.setState({
-      list: [...this.state.list, this.state.inputValue]
-    })
   }
   deleteHandle(index) {
     console.log(index);
@@ -25,23 +14,47 @@ class Todo extends Component {
     list.splice(index, 1);
     this.setState({
       list: list
-    })
+    });
+  }
+  componentDidMount() {
+    const action = initListItems();
+    store.dispatch(action);
   }
   render() {
     return (
-      <TodoWrapper>
-        <input className="todo-input" value={this.state.inputValue} onChange={this.changeHandle.bind(this)} />
-        <button className="todo-btn" onClick={this.clickHandle.bind(this)}>Add</button>
-        <TodoList>
-          {
-            this.state.list.map((item, index) => {
-              return <li key={index} onClick={this.deleteHandle.bind(this, index)}>{item}</li>;
-            })
-          }
-        </TodoList>
-      </TodoWrapper>
-    )
+      <TodoUI 
+        inputValue={this.props.inputValue}
+        data={this.props.data}
+        changeHandle={this.props.changeHandle}
+        clickHandle={this.props.clickHandle}
+        deleteHandle={this.props.deleteHandle} 
+      />
+    );
   }
 }
 
-export default Todo;
+function mapStateToProps (state) {
+  return {
+    inputValue: state.inputValue,
+    data: state.data
+  };
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    changeHandle(e) {
+      const action = handleChangeInput(e.target.value);
+      dispatch(action);
+    },
+    clickHandle() {
+      const action = addListItem();
+      dispatch(action);
+    },
+    deleteHandle(index) {
+      const action = deleteListItem(index);
+      dispatch(action);
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Todo);

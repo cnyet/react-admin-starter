@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Provider } from 'react-redux';  //react-redux 模块可以更方便使用redux，Provider下面的字组件都可以共用store
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './common/header';
-import store from './store';
+import store from './todoStore';
 import { GlobalStyle } from './style';
 import { IconFontGlobal } from './statics/iconfont/iconfont';
 import Home from './pages/home';
@@ -14,20 +14,11 @@ import TodoList from './pages/todo-list';
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      data: 0
-    };
-  }
-  handleChange(value) {
-    console.log(value);
-    this.setState({
-      data: value
-    });
   }
   render() {
     return (
-      <Fragment>
-        <TodoList data={this.state.data} onClick={this.handleChange.bind(this)} />
+      <Provider store={store}>
+        <Todo />
         {/*<GlobalStyle />
         <IconFontGlobal />
         <Provider store={store}>   
@@ -41,7 +32,7 @@ export default class App extends Component {
             </div>
           </BrowserRouter>
         </Provider>*/}
-      </Fragment>
+      </Provider>
     );
   }
 }
