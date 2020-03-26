@@ -10,6 +10,7 @@ import Detail from './pages/detail';
 import Login from './pages/login';
 import Todo from './pages/todo';
 import TodoList from './pages/todo-list';
+import TodoTest from './pages/todo-test';
 
 export default class App extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Todo />
+        <TodoTest text="todo" />
         {/*<GlobalStyle />
         <IconFontGlobal />
         <Provider store={store}>   

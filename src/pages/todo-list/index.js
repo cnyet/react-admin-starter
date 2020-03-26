@@ -33,6 +33,9 @@ class TodoList extends Component {
      const action = getListItems();
      stores.dispatch(action);
    }
+   shuoldComponentUpdate() {
+     console.log('组件更新之前执行');
+   }
    render () {
      return (
        <TodoListUI 

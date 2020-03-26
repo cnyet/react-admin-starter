@@ -23,6 +23,8 @@ class Todo extends Component {
   render() {
     return (
       <TodoUI 
+        text={12}
+        maxLength={35}
         inputValue={this.props.inputValue}
         data={this.props.data}
         changeHandle={this.props.changeHandle}
