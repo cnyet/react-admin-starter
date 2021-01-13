@@ -1,0 +1,93 @@
+{
+  "id": "2065110",
+  "name": "vue-admin-starter",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "6482706",
+      "name": "detail",
+      "font_class": "detail-copy",
+      "unicode": "eadd",
+      "unicode_decimal": 60125
+    },
+    {
+      "icon_id": "6907202",
+      "name": "form",
+      "font_class": "form",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "7685014",
+      "name": "cart",
+      "font_class": "cart",
+      "unicode": "e6df",
+      "unicode_decimal": 59103
+    },
+    {
+      "icon_id": "7736312",
+      "name": "rmb",
+      "font_class": "rmb",
+      "unicode": "e90d",
+      "unicode_decimal": 59661
+    },
+    {
+      "icon_id": "8860638",
+      "name": "User group",
+      "font_class": "Usergroup",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "10166340",
+      "name": "message",
+      "font_class": "message",
+      "unicode": "e635",
+      "unicode_decimal": 58933
+    },
+    {
+      "icon_id": "6072734",
+      "name": "User Settings",
+      "font_class": "UserSettings",
+      "unicode": "e68c",
+      "unicode_decimal": 59020
+    },
+    {
+      "icon_id": "15218185",
+      "name": "inbox",
+      "font_class": "inbox",
+      "unicode": "e63a",
+      "unicode_decimal": 58938
+    },
+    {
+      "icon_id": "5634190",
+      "name": "list",
+      "font_class": "list",
+      "unicode": "f038",
+      "unicode_decimal": 61496
+    },
+    {
+      "icon_id": "16370482",
+      "name": "exceptionFlow",
+      "font_class": "exceptionFlow",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "961417",
+      "name": "report",
+      "font_class": "baogao",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "836483",
+      "name": "dashboard",
+      "font_class": "dashboard",
+      "unicode": "e6b6",
+      "unicode_decimal": 59062
+    }
+  ]
+}

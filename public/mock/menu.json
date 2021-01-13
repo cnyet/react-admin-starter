@@ -1,0 +1,52 @@
+{
+  "code": 1,
+  "data": [
+    {
+      "key": "1",
+      "path": "/dashboard",
+      "name": "仪表盘",
+      "icon": "icondashboard"
+    }, {
+      "key": "2",
+      "path": "/form",
+      "name": "表单页",
+      "icon": "iconform",
+      "children": [
+        {
+          "key": "2-1",
+          "path": "/form/base",
+          "name": "基础表单"
+        }, {
+          "key": "2-2",
+          "path": "/form/distribution",
+          "name": "分布表单"
+        }, {
+          "key": "2-3",
+          "path": "/form/advanced",
+          "name": "高级表单"
+        }
+      ]
+    }, {
+      "key": "3",
+      "path": "/list",
+      "name": "列表页",
+      "icon": "iconlist",
+      "children": [
+        {
+          "key": "3-1",
+          "path": "/form/check",
+          "name": "查询表格"
+        }, {
+          "key": "3-2",
+          "path": "/form/normal",
+          "name": "标准列表"
+        }, {
+          "key": "3-3",
+          "path": "/form/card",
+          "name": "卡片列表"
+        }
+      ]
+    }
+  ],
+  "messages": "success"
+}
