@@ -16,9 +16,8 @@ export function getMenuList () {
   };
 }
 
-export function handleCollapse (value) {
+export function handleCollapse () {
   return {
-    type: TOGGLE_COLLAPSE,
-    value
+    type: TOGGLE_COLLAPSE
   };
 }

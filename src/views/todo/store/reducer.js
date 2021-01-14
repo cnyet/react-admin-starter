@@ -1,9 +1,10 @@
+import { fromJS } from 'immutable';
 import { INPUT_CHANGE_VALUE, BUTTON_CLICK, DELETE_ITEM } from './actionTypes';
 
-const defaultStates = {
+const defaultStates = fromJS({
   inputValue: 'todo list',
   list: [1, 2, 3]
-};
+});
 
 function reducer (state = defaultStates, action) {
   const newState = JSON.parse(JSON.stringify(state));

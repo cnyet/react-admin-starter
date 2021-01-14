@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Menu } from 'antd';
+import { Link } from "react-router-dom";
 import { createFromIconfontCN } from '@ant-design/icons';
-import stores from './store';
+import store from '../store';
 import { getMenuList } from './store/actionCreators';
 import { AsideWrapper } from './style.js';
-import { Link } from "react-router-dom";
 const IconFont = createFromIconfontCN({
   scriptUrl: '//at.alicdn.com/t/font_2065110_570c4oybdlt.js'
 });
@@ -12,26 +13,15 @@ const IconFont = createFromIconfontCN({
 class Aside extends Component {
   constructor (props) {
     super(props);
-    this.state = stores.getState();
-    this.handleStoreChange = this.handleStoreChange.bind(this);
-  }
-  handleClick (item) {
-    console.log(item);
-  }
-  handleStoreChange () {
-    this.setState(stores.getState());
   }
   componentDidMount () {
-    // 订阅store
-    stores.subscribe(this.handleStoreChange);
     // 获取导航列表
     const action = getMenuList();
-    stores.dispatch(action);
+    store.dispatch(action);
   }
   render () {
-    const menuList = this.state.menus;
     return (
-      <AsideWrapper className={this.state.collapsed ? 'collapsed':''}>
+      <AsideWrapper className={this.props.collapsed ? 'collapsed':''}>
         <div className="logo-wrapper">
           <Link className="link" to="/"></Link>
         </div>
@@ -40,10 +30,9 @@ class Aside extends Component {
           defaultOpenKeys={['sub1']}
           mode="inline"
           theme="dark"
-          inlineCollapsed={this.state.collapsed}
-          onClick={this.handleClick}>
+          inlineCollapsed={this.props.collapsed}>
           {
-            menuList.map(item => {
+            this.props.menus.map(item => {
               if (item.children && item.children.length) {
                 return (
                   <Menu.SubMenu key={item.key} icon={<IconFont type={item.icon} />} title={item.name}>
@@ -71,4 +60,11 @@ class Aside extends Component {
   }
 }
 
-export default Aside;
+const mapStateToProps = (state) => {
+  return {
+    collapsed: state.getIn(['common', 'collapsed']),
+    menus: state.getIn(['common', 'menus'])
+  };
+}
+
+export default connect(mapStateToProps)(Aside);

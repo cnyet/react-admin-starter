@@ -1,55 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import stores from '../../stores';
-import './style.js';
-import { handleButtonClick, handleDeleteItem, getInputChangeValue }  from '../../stores/actionCreators';
+import { connect } from 'react-redux';
+import { handleButtonClick, handleDeleteItem, getInputChangeValue }  from './store/actionCreators';
+import './style.scss';
 
 class Todo extends Component {
   constructor (props) {
     super(props);
-    const storeData = stores.getState();
-    this.state = {
-      title: props.title,
-      ...storeData
-    };
-    this.onClickHandle = this.onClickHandle.bind(this);
-    this.onChangehandle = this.onChangehandle.bind(this);
-    this.handleStoreChange = this.handleStoreChange.bind(this);
-  }
-  handleStoreChange () {
-    const storeData = stores.getState();
-    this.setState({
-      title: this.state.title,
-      ...storeData
-    });
-  }
-  onClickHandle () {
-    const action = handleButtonClick(this.state.inputValue);
-    stores.dispatch(action);
-  }
-  onChangehandle (e) {
-    const action = getInputChangeValue(e.target.value);
-    stores.dispatch(action);
-  }
-  onDeleteHandle (key) {
-    const action = handleDeleteItem(key);
-    stores.dispatch(action);
-  }
-  componentDidMount () {
-    // 订阅store
-    stores.subscribe(this.handleStoreChange);
   }
   render () {
-    const { list } = this.state;
     return (
       <div className="Todo-container">
         <div className="Todo-box">
-          <input className="Todo-input" value={this.state.inputValue} onChange={this.onChangehandle} />
-          <button className="Todo-btn" onClick={this.onClickHandle}>Add</button>
+          <input className="Todo-input" value={this.props.inputValue} onChange={this.props.onChangehandle} />
+          <button className="Todo-btn" onClick={this.props.onClickHandle}>Add</button>
           <ul className="Todo-group">
             {
-              list.map((item, index) => 
-                <li key={index} className="Todo-item" onClick={this.onDeleteHandle.bind(this, index)}>{item}</li>
+              this.props.list.map((item, index) => 
+                <li key={index} className="Todo-item" onClick={this.props.onDeleteHandle.bind(this, index)}>{item}</li>
               )
             }
           </ul>
@@ -68,4 +36,28 @@ Todo.defaultProps = {
   title: 'Todo List'
 };
 
-export default Todo;
+const mapStateToProps = (state) => {
+  return {
+    inputValue: state.getIn(['todo', 'inputValue']),
+    list: state.getIn(['todo', 'list'])
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onClickHandle () {
+      const action = handleButtonClick();
+      dispatch(action);
+    },
+    onChangehandle (e) {
+      const action = getInputChangeValue(e.target.value);
+      dispatch(action);
+    },
+    onDeleteHandle (key) {
+      const action = handleDeleteItem(key);
+      dispatch(action);
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Todo);

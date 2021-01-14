@@ -1,9 +1,10 @@
+import { fromJS } from 'immutable';
 import { INIT_MENU_LIST, TOGGLE_COLLAPSE } from './actionTypes';
 
-const defaultStates = {
+const defaultStates = fromJS({
   collapsed: false,
   menus: []
-};
+});
 
 function reducer (state = defaultStates, action) {
   const newState = JSON.parse(JSON.stringify(state));
@@ -12,7 +13,7 @@ function reducer (state = defaultStates, action) {
     return newState;
   }
   if (action.type === TOGGLE_COLLAPSE) {
-    newState.collapsed = action.value;
+    newState.collapsed = !newState.collapsed;
     return newState;
   }
   return newState;

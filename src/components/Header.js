@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Menu, Dropdown } from 'antd';
-import stores from '../common/store';
-import { handleCollapse } from '../common/store/actionCreators';
+import { handleCollapse } from './store/actionCreators';
 import { HeaderWrapprt } from './style.js';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import avatar from '../../assets/images/woman.png';
+import avatar from '@/assets/images/woman.png';
 
 const menu = (
   <Menu>
@@ -16,27 +16,12 @@ const menu = (
 class Header extends Component {
   constructor (props) {
     super(props);
-    this.state = stores.getState();
-    this.handleToggle = this.handleToggle.bind(this);
-    this.handleStoreChange = this.handleStoreChange.bind(this);
-  }
-  handleStoreChange () {
-    this.setState(stores.getState());
-  }
-  handleToggle () {
-    const collapsed = this.state.collapsed;
-    const action = handleCollapse(!collapsed);
-    stores.dispatch(action);
-  }
-  componentDidMount () {
-     // 订阅store
-     stores.subscribe(this.handleStoreChange);
   }
   render () {
     return (
       <HeaderWrapprt>
-        <span className="trigger" onClick={this.handleToggle}>
-          { this.state.collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined /> }
+        <span className="trigger" onClick={this.props.handleToggle}>
+          { this.props.collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined /> }
         </span>
         <span className="header-left">首页</span>
         <div className="header-right">
@@ -51,4 +36,19 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    collapsed: state.getIn(['common', 'collapsed']),
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleToggle () {
+      const action = handleCollapse();
+      dispatch(action);
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
