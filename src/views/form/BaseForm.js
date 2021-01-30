@@ -1,11 +1,19 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import './style.scss';
 
-export default class BaseForm extends Component {
-  render () {
-    return (
-      <div className="baseForm-container">
-        <h1>baseForm</h1>
-      </div>
-    );
-  }
+function BaseForm () {
+  const [count, setCount] = useState(0);
+
+  useEffect (() => {
+    document.title = `You clicked ${count} times.`;
+  });
+
+  return (
+    <div className="baseForm-container">
+      <h1>You clicked {count} times;</h1>
+      <button onClick={() => setCount(count+1)}>increase</button>
+    </div>
+  );
 }
+
+export default BaseForm;
