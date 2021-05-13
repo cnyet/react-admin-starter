@@ -1,27 +1,26 @@
-import React, { Component, Fragment } from 'react'; 
+import React, { Component } from 'react'; 
 import { Provider } from 'react-redux';  //react-redux 模块可以更方便使用redux，Provider下面的字组件都可以共用store
-import { BrowserRouter, Route } from 'react-router-dom';
-import Header from './common/header';
+// import { BrowserRouter, Route } from 'react-router-dom';
+// import Header from './common/header';
 import store from './todoStore';
 import { GlobalStyle } from './style';
-import { IconFontGlobal } from './statics/iconfont/iconfont';
-import Home from './pages/home';
-import Detail from './pages/detail';
-import Login from './pages/login';
-import Todo from './pages/todo';
-import TodoList from './pages/todo-list';
 import TodoTest from './pages/todo-test';
+// import TodoRedux from './pages/todo-redux';
+// import { IconFontGlobal } from './statics/iconfont/iconfont';
+// import Home from './pages/home';
+// import Detail from './pages/detail';
+// import Login from './pages/login';
+// import Todo from './pages/todo';
+// import TodoList from './pages/todo-list';
+// import TodoTest from './pages/todo-test';
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <Provider store={store}>
-        <TodoTest text="todo" />
-        {/*<GlobalStyle />
-        <IconFontGlobal />
+        <GlobalStyle />
+        <TodoTest />
+        {/* <IconFontGlobal />
         <Provider store={store}>   
           <BrowserRouter>
             <div>
@@ -32,7 +31,7 @@ export default class App extends Component {
               <Route path="/todo" exact component={Todo}></Route>
             </div>
           </BrowserRouter>
-        </Provider>*/}
+        </Provider> */}
       </Provider>
     );
   }

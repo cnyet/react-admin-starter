@@ -5,7 +5,6 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 class TodoListUI extends Component {
   render() {
-    console.log(this.props);
     return (
       <TodoWrapper className="wrapper">
         <Input className="input" value={this.props.inputValue} onChange={this.props.handleChange} />

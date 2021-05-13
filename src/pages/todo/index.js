@@ -9,7 +9,6 @@ class Todo extends Component {
     super(props);
   }
   deleteHandle(index) {
-    console.log(index);
     const list = [...this.state.list];
     list.splice(index, 1);
     this.setState({

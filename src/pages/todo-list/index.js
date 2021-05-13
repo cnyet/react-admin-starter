@@ -6,7 +6,7 @@ import { getInputChangeValue, handleButtonClick, handleDeleteItem, getListItems 
 
 class TodoList extends Component {
    constructor(props) {
-     super(props);
+     super();
      this.state = stores.getState();
      this.handleChange = this.handleChange.bind(this);
      this.handleStoreChange = this.handleStoreChange.bind(this);
@@ -37,6 +37,7 @@ class TodoList extends Component {
      console.log('组件更新之前执行');
    }
    render () {
+    console.log(this.props)
      return (
        <TodoListUI 
          inputValue={this.state.inputValue}
@@ -48,5 +49,9 @@ class TodoList extends Component {
      );
    }
 }
+
+TodoList.propTypes = {
+  text: PropTypes.string
+};
 
 export default TodoList;
