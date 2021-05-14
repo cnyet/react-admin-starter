@@ -6,7 +6,7 @@ class TodoListItem extends Component {
     return (
       <TodoWrapper>
         <input value={this.props.inputValue} onChange={this.props.inputChangeHandle} />
-        <button className="btn" onClick={this.props.btnClickHandle}>添加</button>
+        <button className="btn" onClick={this.props.btnClickHandle}>{this.props.btnText}</button>
         <ul className="list">
           {
             this.props.list.map((item, index) => {

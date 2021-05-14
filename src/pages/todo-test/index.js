@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TodoListItem from './ui';
 import store from './store';
-import { getInputChangeValue } from './store/actionCreators';
+import { initListData, getInputChangeValue, buttonClickHandle, deleteItemHandle } from './store/actionCreators';
 
 class TodoTest extends Component {
   constructor (props) {
@@ -21,25 +21,22 @@ class TodoTest extends Component {
     store.dispatch(action);
   }
   btnClickHandle () {
-    const value = this.state.inputValue;
-    const list = [...this.state.list];
-    list.push(value);
-    this.setState({
-      list: list,
-      inputValue: ''
-    })
+    const action = buttonClickHandle();
+    store.dispatch(action);
   }
   deleteHandle (key) {
-    const list = [...this.state.list];
-    list.splice(key, 1);
-    this.setState({
-      list: list
-    })
+    const action = deleteItemHandle(key);
+    store.dispatch(action);
+  }
+  componentDidMount () {
+    const action = initListData();
+    store.dispatch(action);
   }
   render () {
     return (
       <TodoListItem
         inputValue={this.state.inputValue}
+        btnText={this.state.btnText}
         list={this.state.list}
         inputChangeHandle={this.inputChangeHandle}
         btnClickHandle={this.btnClickHandle}
